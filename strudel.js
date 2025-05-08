@@ -1,26 +1,45 @@
+samples({
+  finance:  ['man-in-finance/finance_00.wav', 'man-in-finance/finance_01.wav', 'man-in-finance/finance_02.wav', 'man-in-finance/murrayhill.wav']
+}, 'github:sandpills/v10101a-samples/main/');
 
-//note("C D E F G A B")  // Isso toca as notas de uma oitava.
-//note("C# D# F# G# A#")  // Isso toca as notas sustenidas da oitava.
+///c = DÓ, d = RÉ, e = MI, f = FÁ, g = SOL, a = LÁ, b = SI
 
-// Notas das teclas pretas:
-//37, 39, 42, 44, 46, 49, 51, 54, 56, 58, 61, 63, 66, 68, 70, 73, 75, 78, 80, 82
-// Notas das teclas brancas:
-//36, 38, 40, 41, 43, 45, 47, 48, 50, 52, 53, 55, 57, 59, 60, 62, 64, 65, 67, 69, 71, 72, 74, 76, 77, 79, 81, 83 
+//$: n("<1 0>").s("finance").slow(2).clip(1)
+//  .mask("<1 1 1 0>/4")
 
-///C = DÓ, D = RÉ, E = MI, F = FÁ, G = SOL, A = LÁ, B = SI
+$: n("0").s("finance").slow(2).clip(1.4)
+//  .struct("1(<3 5>,8)")
+//  .mask("<0 0 0 1>/4").gain(0.8).room(1.2)
 
-//Segurar multiplas teclas ao mesmo tempo:
-//note("<[c3,eb3,g3] [f3,a3,c4]>")
-//<> define o tempo de acordo com o numero de argumentos
-// [] agrupa o som
-//note("[c e]< e f g a b>").gain(".2")
-note("<g ~ g g [g a] f4 d d c6>").gain(".9").s("sawtooth")
-//s("sawtooth square triangle sine")
-//.s("piano")
-//.delay("2")
-._pitchwheel()
-.scope()
-//.s("sawtooth")
-//.cutoff(300)
-//.delay(1.6)
-//.room(1.7)
+////////////////////////////////////////////////////////////////////////////////
+//note("1 2 3").sound("numbers")
+$: note("[c e] a g e/2").sound("numbers")
+////////////////////////////////////////////////////////////////////////////////
+
+//$: note("<a1 c2>/2")
+//.sound("supersaw")
+//.euclidLegato(9,16)
+//.ftype('24db')
+//.lpf(tri.rangex(2000,400).slow(8))
+//.lpenv(6)
+//.dist("2:.4")
+//.echo(2, 1/16, .7)
+//.mul(gain("[.5 1!3]*4")) //side chain
+//.add(note("<[0 5]*4 [5 10]*4>"))
+// .hush()
+
+//$: s("oh*16")
+//  .bank("RolandTR909")
+//  .decay(sine.range(.2,.4))
+//  .dist("1:.3")
+//  .mul(gain("[<0!3 1> .2 1 <0!3 .2>]*4")) //groove
+//  .mul(gain("[.2 1!3]*4")) //side chain
+//  .pan(tri.range(.7,.3))
+//  .hpf(800)
+//  .room(.1)
+//  .mask("<0 1>/8")
+  // .hush()
+
+// $: s("bd*4").bank('RolandTR909').dist("1:1")
+
+//.scope()
